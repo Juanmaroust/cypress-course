@@ -10,7 +10,7 @@ class HomePage{
 
     }
 
-    clickLoginButton(){
+    clickSignupLoginButton(){
         return cy.get('.fa.fa-lock').click();
     }
 
@@ -19,7 +19,7 @@ class HomePage{
     }
 
     verifyLoginMessage(){
-        return cy.get('.signup-form').should('contain', 'Login to your account');
+        return cy.get('.login-form').should('contain', 'Login to your account');
     }
 
     fillName(value){
@@ -29,12 +29,31 @@ class HomePage{
         return this
     }
 
-    fillEmailAddress(value){
+    fillSignUpEmailAddress(value){
         const signUpEmail = cy.get('input[data-qa="signup-email"]');
         signUpEmail.clear()
         signUpEmail.type(value)
         return this
 
+    }
+
+    fillLoginEmailAddress(value){
+        const loginEmail = cy.get('input[data-qa="login-email"]');
+        loginEmail.clear()
+        loginEmail.type(value)
+        return this
+
+    }
+
+    fillLoginPassword(value){
+        const loginPassword = cy.get('input[data-qa="login-password"]')
+        loginPassword.clear()
+        loginPassword.type(value)
+        return this
+    }
+
+    clickLoginButton(){
+        return cy.get('button[data-qa="login-button"]').click();
     }
 
     clickSignUpButton(){
@@ -51,6 +70,10 @@ class HomePage{
 
     verifyAccountDeletedMessage(){
         return cy.get('h2[data-qa="account-deleted"]').should('contain', 'Account Deleted!')
+    }
+
+    verifyLoggedInAsUserMessage(){
+        return cy.get('.nav.navbar-nav').should('contain', 'Logged in as')
     }
 }
 
