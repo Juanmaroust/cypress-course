@@ -75,6 +75,10 @@ class HomePage{
     verifyLoggedInAsUserMessage(){
         return cy.get('.nav.navbar-nav').should('contain', 'Logged in as')
     }
+
+    verifyUnsuccessfulLoginMessage(){
+        return cy.get('.login-form').should('contain', 'Your email or password is incorrect!');
+    }
 }
 
 export default HomePage

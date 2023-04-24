@@ -51,4 +51,14 @@ describe('Test Cases 1-10', () => {
     homePage.verifyLoggedInAsUserMessage();
   })
 
+  it('Test Case 3: Unsuccessful Login', () => {
+    homePage.homeLogoIsVisible();
+    homePage.clickSignupLoginButton();
+    homePage.verifyLoginMessage();
+    homePage.fillLoginEmailAddress("Fail@test.com");
+    homePage.fillLoginPassword("asdasdsadsadasd");
+    homePage.clickLoginButton();
+    homePage.verifyUnsuccessfulLoginMessage();
+  })
+
 })
