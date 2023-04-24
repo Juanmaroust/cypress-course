@@ -61,4 +61,16 @@ describe('Test Cases 1-10', () => {
     homePage.verifyUnsuccessfulLoginMessage();
   })
 
+  it('Test Case 4: Logout User', () => {
+    homePage.homeLogoIsVisible();
+    homePage.clickSignupLoginButton();
+    homePage.verifyLoginMessage();
+    homePage.fillLoginEmailAddress("Juan1@test.com");
+    homePage.fillLoginPassword("JuanTesting1");
+    homePage.clickLoginButton();
+    homePage.verifyLoggedInAsUserMessage();
+    homePage.clickLogoutButton();
+    homePage.verifyLoginMessage();
+  })
+
 })

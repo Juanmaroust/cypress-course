@@ -11,7 +11,11 @@ class HomePage{
     }
 
     clickSignupLoginButton(){
-        return cy.get('.fa.fa-lock').click();
+        return cy.get('a[href="/login"]').get('.fa.fa-lock').click();
+    }
+
+    clickLogoutButton(){
+        return cy.get('a[href="/logout"]').get('.fa.fa-lock').click();
     }
 
     verifySignUpMessage(){
