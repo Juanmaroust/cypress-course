@@ -14,6 +14,10 @@ class HomePage{
         return cy.get('a[href="/login"]').get('.fa.fa-lock').click();
     }
 
+    clickContactUsButton(){
+        return cy.get('a[href="/contact_us"]').get('.fa.fa-envelope').click();
+    }
+
     clickLogoutButton(){
         return cy.get('a[href="/logout"]').get('.fa.fa-lock').click();
     }

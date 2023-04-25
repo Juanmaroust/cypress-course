@@ -1,8 +1,10 @@
+import ContactUsPage from "../../pages/ContactUsPage";
 import HomePage from "../../pages/HomePage";
 import SignUpPage from "../../pages/SignUpPage";
 
 const homePage = new HomePage();
 const signUpPage = new SignUpPage();
+const contactUsPage = new ContactUsPage();
 
 describe('Test Cases 1-10', () => {
   beforeEach(() => {
@@ -11,19 +13,20 @@ describe('Test Cases 1-10', () => {
   })
 
   it('Test Case 1: Register user and delete it', () => {
+    let r = (Math.random() + 1).toString(36).substring(7);
     homePage.homeLogoIsVisible();
     homePage.clickSignupLoginButton();
     homePage.verifySignUpMessage();
-    homePage.fillName("Juan");
-    homePage.fillSignUpEmailAddress("Juan@test.com");
+    homePage.fillName(r);
+    homePage.fillSignUpEmailAddress(r + "@test.com");
     homePage.clickSignUpButton();
     signUpPage.verifyEnterAccountInformationMessage();
     signUpPage.fillTitle();
-    signUpPage.fillPassword("JuanTesting");
+    signUpPage.fillPassword("Testing");
     signUpPage.fillDateOfBirth('14', 'February', '1996');
     signUpPage.clickSignUpForNewsletterCheckBox();
     signUpPage.clickReceiveSpecialOffersFromParternersCheckBox();
-    signUpPage.fillFirstName("Juan");
+    signUpPage.fillFirstName(r);
     signUpPage.fillLastName("Testing");
     signUpPage.fillCompany("Company X");
     signUpPage.fillFirstAddress("Street 1234");
@@ -81,6 +84,21 @@ describe('Test Cases 1-10', () => {
     homePage.fillSignUpEmailAddress("Juan1@test.com");
     homePage.clickSignUpButton();
     signUpPage.verifyInvalidEmailAddressMessage();
+  })
+
+  it('Test Case 6: Contact Us Form', () => {
+    homePage.homeLogoIsVisible();
+    homePage.clickContactUsButton();
+    contactUsPage.verifyGetInTouchMessage();
+    contactUsPage.fillName("Juan");
+    contactUsPage.fillEmailAddress("Juan@Testing.com");
+    contactUsPage.fillSubject("New Subject");
+    contactUsPage.fillMessage("New Message");
+    contactUsPage.uploadPicture();
+    contactUsPage.clickSubmitButton();
+    contactUsPage.verifySuccessfulMessage();
+    contactUsPage.clickHomeButton();
+    homePage.homeLogoIsVisible();
   })
 
 })
