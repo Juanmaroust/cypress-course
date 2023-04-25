@@ -113,6 +113,10 @@ class SignUpPage{
         return cy.get('a[data-qa="continue-button"]').click()
     }
 
+    verifyInvalidEmailAddressMessage(){
+        return cy.get('.signup-form').should('contain', 'Email Address already exist!')
+    }
+
 }
 
 export default SignUpPage

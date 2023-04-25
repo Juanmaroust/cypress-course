@@ -73,4 +73,14 @@ describe('Test Cases 1-10', () => {
     homePage.verifyLoginMessage();
   })
 
+  it('Test Case 5: Register User with existing email', () => {
+    homePage.homeLogoIsVisible();
+    homePage.clickSignupLoginButton();
+    homePage.verifySignUpMessage();
+    homePage.fillName("Juan");
+    homePage.fillSignUpEmailAddress("Juan1@test.com");
+    homePage.clickSignUpButton();
+    signUpPage.verifyInvalidEmailAddressMessage();
+  })
+
 })
