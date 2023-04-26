@@ -1,10 +1,12 @@
 import ContactUsPage from "../../pages/ContactUsPage";
 import HomePage from "../../pages/HomePage";
+import ProductsPage from "../../pages/ProductsPage";
 import SignUpPage from "../../pages/SignUpPage";
 
 const homePage = new HomePage();
 const signUpPage = new SignUpPage();
 const contactUsPage = new ContactUsPage();
+const productsPage = new ProductsPage();
 
 describe('Test Cases 1-10', () => {
   beforeEach(() => {
@@ -101,4 +103,25 @@ describe('Test Cases 1-10', () => {
     homePage.homeLogoIsVisible();
   })
 
+  it('Test Case 7: Verify Test Cases Page', () => {
+    homePage.homeLogoIsVisible();
+    homePage.clickTestCasesButton();
+    homePage.verifyCenterMessage("Test Cases");
+
+  })
+
+  it('Test Case 8: Verify All Products and product detail page', () => {
+    homePage.homeLogoIsVisible();
+    homePage.clickProductsButton();
+    homePage.verifyCenterMessage("All Products");
+    productsPage.clickFirstProduct();
+    productsPage.verifyProductDetailsIsDisplayed();
+    productsPage.verifySpecificProductDetailIsDisplayed("Blue Top");
+    productsPage.verifySpecificProductDetailIsDisplayed("Category: Women > Tops");
+    productsPage.verifySpecificProductDetailIsDisplayed("Rs. 500");
+    productsPage.verifySpecificProductDetailIsDisplayed("Availability: In Stock");
+    productsPage.verifySpecificProductDetailIsDisplayed("Condition: New");
+    productsPage.verifySpecificProductDetailIsDisplayed("Brand: Polo");
+    
+  })
 })

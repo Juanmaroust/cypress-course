@@ -14,6 +14,14 @@ class HomePage{
         return cy.get('a[href="/login"]').get('.fa.fa-lock').click();
     }
 
+    clickTestCasesButton(){
+        return cy.get('a[href="/test_cases"]').get('.fa.fa-list').first().click();
+    }
+
+    clickProductsButton(){
+        return cy.get('a[href="/products"]').get('.material-icons.card_travel').click();
+    }
+
     clickContactUsButton(){
         return cy.get('a[href="/contact_us"]').get('.fa.fa-envelope').click();
     }
@@ -85,7 +93,11 @@ class HomePage{
     }
 
     verifyUnsuccessfulLoginMessage(){
-        return cy.get('.login-form').should('contain', 'Your email or password is incorrect!');
+        return cy.get('.login-form').should('contain', 'Your email or password is incorrect!')
+    }
+
+    verifyCenterMessage(value){
+        return cy.get('.title.text-center').should('contain', value);
     }
 }
 
