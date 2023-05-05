@@ -1,0 +1,23 @@
+{
+  "name": "cypress-course",
+  "version": "1.0.0",
+  "description": "Test cases taken from automationexercise.com. Automated using Cypress and Page Object Model.",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "test:e2e": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Juanmaroust/cypress-course.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Juanmaroust/cypress-course/issues"
+  },
+  "homepage": "https://github.com/Juanmaroust/cypress-course#readme",
+  "devDependencies": {
+    "cypress": "^12.11.0"
+  }
+}
