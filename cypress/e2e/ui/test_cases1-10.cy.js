@@ -11,7 +11,6 @@ const productsPage = new ProductsPage();
 describe('Test Cases 1-10', () => {
   beforeEach(() => {
     homePage.visit();
-    
   })
 
   it('Test Case 1: Register user and delete it', () => {
@@ -107,7 +106,6 @@ describe('Test Cases 1-10', () => {
     homePage.homeLogoIsVisible();
     homePage.clickTestCasesButton();
     homePage.verifyCenterMessage("Test Cases");
-
   })
 
   it('Test Case 8: Verify All Products and product detail page', () => {
@@ -122,6 +120,27 @@ describe('Test Cases 1-10', () => {
     productsPage.verifySpecificProductDetailIsDisplayed("Availability: In Stock");
     productsPage.verifySpecificProductDetailIsDisplayed("Condition: New");
     productsPage.verifySpecificProductDetailIsDisplayed("Brand: Polo");
-    
   })
+
+  it('Test Case 9: Search Product', () => {
+    homePage.homeLogoIsVisible();
+    homePage.clickProductsButton();
+    homePage.verifyCenterMessage("All Products");
+    productsPage.fillSearchProductInput("T-Shirt");
+    productsPage.clickSubmitSearch();
+    homePage.verifyCenterMessage("Searched Products");
+    productsPage.verifyAllProductsMatchWithSearch("T-Shirt");
+  })
+
+  it('Test Case 10: Verify Subscription in home page', () => {
+    homePage.homeLogoIsVisible();
+    homePage.clickTestCasesButton();
+    homePage.verifyCenterMessage("Test Cases");
+    homePage.scrollToSubscriptionMessage();
+    homePage.verifySubscriptionMessage();
+    homePage.fillSubscriptionEmail("Juan@Testing.com");
+    homePage.clickSubscriptionButton();
+    homePage.verifySuccessfulSubscrition();
+  })
+
 })

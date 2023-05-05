@@ -99,6 +99,28 @@ class HomePage{
     verifyCenterMessage(value){
         return cy.get('.title.text-center').should('contain', value);
     }
+
+    verifySubscriptionMessage(){
+        return cy.get('.single-widget').should('contain', 'Subscription');
+    }
+
+    scrollToSubscriptionMessage(){
+        return cy.get('.single-widget').scrollIntoView();
+    }
+
+    fillSubscriptionEmail(value){
+        const subscriptionEmail = cy.get('#susbscribe_email');
+        subscriptionEmail.clear()
+        return subscriptionEmail.type(value)  
+    }
+
+    clickSubscriptionButton(){
+        return cy.get('#subscribe').click();
+    }
+
+    verifySuccessfulSubscrition(){
+        return cy.get('#success-subscribe').should('contain', 'You have been successfully subscribed!');
+    }
 }
 
 export default HomePage
