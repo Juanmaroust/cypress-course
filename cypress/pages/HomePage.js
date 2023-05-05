@@ -11,7 +11,23 @@ class HomePage{
     }
 
     clickSignupLoginButton(){
-        return cy.get('.fa.fa-lock').click();
+        return cy.get('a[href="/login"]').get('.fa.fa-lock').click();
+    }
+
+    clickTestCasesButton(){
+        return cy.get('a[href="/test_cases"]').get('.fa.fa-list').first().click();
+    }
+
+    clickProductsButton(){
+        return cy.get('a[href="/products"]').get('.material-icons.card_travel').click();
+    }
+
+    clickContactUsButton(){
+        return cy.get('a[href="/contact_us"]').get('.fa.fa-envelope').click();
+    }
+
+    clickLogoutButton(){
+        return cy.get('a[href="/logout"]').get('.fa.fa-lock').click();
     }
 
     verifySignUpMessage(){
@@ -77,7 +93,33 @@ class HomePage{
     }
 
     verifyUnsuccessfulLoginMessage(){
-        return cy.get('.login-form').should('contain', 'Your email or password is incorrect!');
+        return cy.get('.login-form').should('contain', 'Your email or password is incorrect!')
+    }
+
+    verifyCenterMessage(value){
+        return cy.get('.title.text-center').should('contain', value);
+    }
+
+    verifySubscriptionMessage(){
+        return cy.get('.single-widget').should('contain', 'Subscription');
+    }
+
+    scrollToSubscriptionMessage(){
+        return cy.get('.single-widget').scrollIntoView();
+    }
+
+    fillSubscriptionEmail(value){
+        const subscriptionEmail = cy.get('#susbscribe_email');
+        subscriptionEmail.clear()
+        return subscriptionEmail.type(value)  
+    }
+
+    clickSubscriptionButton(){
+        return cy.get('#subscribe').click();
+    }
+
+    verifySuccessfulSubscrition(){
+        return cy.get('#success-subscribe').should('contain', 'You have been successfully subscribed!');
     }
 }
 
